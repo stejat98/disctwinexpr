@@ -17,10 +17,7 @@ phenodiagnosis_GSE16059 <- gse16059$ GSE16059_series_matrix.txt.gz@phenoData@dat
 twp_num <- gse16059$GSE16059_series_matrix.txt.gz@phenoData@data$characteristics_ch1
 sex_group <- gse16059$GSE16059_series_matrix.txt.gz@phenoData@data$characteristics_ch1.1 
 
-grep('unaffected', phenodiagnosis_GSE16059)
-grep('CFS', phenodiagnosis_GSE16059)
-
-
+## create vector of 0s and 1s to indicate phenotype status
 Healthy0.CFS1 <- vector(mode="integer", length=88)
 
 Healthy0.CFS1[grep('unaffected', phenodiagnosis_GSE16059)] <- 0
@@ -30,7 +27,7 @@ Healthy0.CFS1[c(grep('CFS', phenodiagnosis_GSE16059),grep('ICF', phenodiagnosis_
 ## extract expression data table
 gsm_tables_GSE16059 <- exprs(gse16059$'GSE16059_series_matrix.txt.gz')
 gsm_tables_GSE16059 <- as.data.frame(gsm_tables_GSE16059)
-#gsm16059_names <- gse16059$'GSE16059_series_matrix.txt.gz'@phenoData@data$geo_accession
+gsm16059_names <- gse16059$'GSE16059_series_matrix.txt.gz'@phenoData@data$geo_accession
 
 ## Table with information (sex, age, twin pair number, etc.) for each sample
 Sample_Info <- cbind(TWP_NUM = gsub('twin pair:','',twp_num), Healthy0.CFS1,Sex_Group = gsub('sex: ','',sex_group),GSM = as.character(gsm16059_names))
