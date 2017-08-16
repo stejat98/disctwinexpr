@@ -47,8 +47,6 @@ str(gpl570info)
 ## Extract annotation table for GPL570 platform
 gpl570infodf <- gpl570info@dataTable@table
 
-
-
 ## Extract microarray probe ids and assign them to a vector
 probe_id_gse22619 <- as.character(t(gpl570infodf$ID))
 ## Extract Entrez Gene IDs and assign them to a vector
