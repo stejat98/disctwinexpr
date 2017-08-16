@@ -109,6 +109,7 @@ wilcox_testh2disease_phenotype_p_val <- function(a)
   return(diseasepheno_wilcox_test)
 }
 
+## apply over all 7 phenotypes
 lapply(1:7,wilcox_testh2disease_phenotype_p_val)
 
 
